@@ -32,6 +32,8 @@ Spotify muzicka platforma za pregled albuma i pjesama sa Spotify brendom i dizaj
 3. Otvorite browser: http://localhost:8080/a
 
 ## Screenshot
-<img width="1918" height="1077" alt="image" src="https://github.com/user-attachments/assets/243a72bc-9f9c-4ec4-a118-2a90d0ed4f8e" />
-<img width="1918" height="1075" alt="image" src="https://github.com/user-attachments/assets/3647e716-16a3-4a01-a876-3cd72cc8bb0a" />
+<img width="1906" height="836" alt="image" src="https://github.com/user-attachments/assets/ccdcf881-15a8-44aa-86e2-e4a82ada1fca" />
+
+<img width="1438" height="651" alt="image" src="https://github.com/user-attachments/assets/11d86ef5-2165-4744-a2b4-7dc8cea602ad" />
+
 
