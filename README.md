@@ -28,7 +28,7 @@ Spotify muzicka platforma za pregled albuma i pjesama sa Spotify brendom i dizaj
 
 ## Pokretanje
 1. Otvorite projekat u IntelliJ IDEA
-2. Pokrenite DemoApplication.java
+2. Pokrenite SpotifyApplication.java
 3. Otvorite browser: http://localhost:8080/a
 
 ## Screenshot
