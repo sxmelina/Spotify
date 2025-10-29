@@ -2,88 +2,127 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Lista Pjesama - Muzička Platforma</title>
+    <title>Lista Pjesama - Spotify</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 40px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #FFB6D9 0%, #FFC9E3 50%, #FFE5F1 100%);
             min-height: 100vh;
+            padding: 40px 20px;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            background-color: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            background-color: #FFFFFF;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 50px rgba(255, 105, 180, 0.3);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .logo {
+            color: #FF69B4;
+            font-size: 3.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
         }
         h1 {
-            color: #f5576c;
-            margin: 0 0 10px 0;
+            color: #FF1493;
             font-size: 2.5em;
+            margin-bottom: 10px;
         }
         .subtitle {
-            color: #666;
+            color: #FF69B4;
+            font-size: 1.2em;
             margin-bottom: 30px;
-            font-size: 1.1em;
         }
         .nav {
-            margin-bottom: 25px;
+            text-align: center;
+            margin-bottom: 40px;
         }
         .nav a {
-            background-color: #f5576c;
-            color: white;
-            padding: 10px 20px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: #FFFFFF;
+            padding: 14px 30px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 30px;
             font-weight: bold;
-            transition: background-color 0.3s;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
         }
         .nav a:hover {
-            background-color: #f093fb;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
         }
         table {
-            border-collapse: collapse;
             width: 100%;
-            background-color: white;
-            border-radius: 10px;
+            border-collapse: collapse;
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E9 100%);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
         }
         th, td {
-            padding: 15px;
+            padding: 18px;
             text-align: left;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 2px solid #FFB6D9;
         }
         th {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: #FFFFFF;
             font-weight: bold;
             text-transform: uppercase;
             font-size: 0.9em;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+        }
+        td {
+            color: #C71585;
+            font-size: 1em;
         }
         tr:hover {
-            background-color: #fff5f7;
+            background-color: #FFE4E9;
         }
         tr:last-child td {
             border-bottom: none;
         }
+        .album-info {
+            color: #FF69B4;
+            font-size: 0.95em;
+        }
         .album-name {
-            color: #f5576c;
+            color: #FF1493;
+            font-weight: bold;
+        }
+        .song-count {
+            text-align: center;
+            color: #FF69B4;
+            font-size: 1.1em;
+            margin-top: 30px;
             font-weight: bold;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>🎵 Lista Pjesama</h1>
-    <p class="subtitle">Sve pjesme iz naše muzičke kolekcije</p>
+    <div class="header">
+        <div class="logo">Spotify</div>
+        <h1>Lista Pjesama</h1>
+        <p class="subtitle">Sve pjesme dostupne na Spotify platformi</p>
+    </div>
 
     <div class="nav">
-        <a href="/a">💿 Pogledaj sve albume</a>
+        <a href="/a">Pogledaj sve albume</a>
     </div>
 
     <table>
@@ -105,12 +144,14 @@
             <td>
                         <span th:with="album=${demoData.getAlbumById(pjesma.albumId)}">
                             <span class="album-name" th:text="${album.naziv}"></span>
-                            <span th:text="' - ' + ${album.izvodjac}"></span>
+                            <span class="album-info" th:text="' - ' + ${album.izvodjac}"></span>
                         </span>
             </td>
         </tr>
         </tbody>
     </table>
+
+    <p class="song-count" th:text="${#lists.size(pjesme)} + ' pjesama dostupno'"></p>
 </div>
 </body>
 </html>

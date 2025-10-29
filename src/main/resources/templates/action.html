@@ -2,38 +2,65 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Pjesme Albuma - Muzička Platforma</title>
+    <title>Pjesme Albuma - Spotify</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 40px;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, #FFB6D9 0%, #FFC9E3 50%, #FFE5F1 100%);
             min-height: 100vh;
+            padding: 40px 20px;
         }
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            background-color: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            background-color: #FFFFFF;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 50px rgba(255, 105, 180, 0.3);
+        }
+        .logo {
+            color: #FF69B4;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
         }
         .album-header {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E9 100%);
             padding: 30px;
-            border-radius: 10px;
-            color: white;
+            border-radius: 20px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            border: 2px solid #FFB6D9;
+        }
+        .album-cover {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        .album-info-section {
+            flex: 1;
         }
         .album-header h1 {
-            margin: 0 0 15px 0;
-            font-size: 2.5em;
+            color: #FF1493;
+            font-size: 2.2em;
+            margin-bottom: 15px;
         }
         .album-info {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             font-size: 1.1em;
         }
         .album-info div {
@@ -41,98 +68,123 @@
             flex-direction: column;
         }
         .album-info strong {
-            font-size: 0.9em;
-            opacity: 0.9;
+            color: #FF69B4;
+            font-size: 0.85em;
             margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .album-info span {
+            color: #C71585;
+            font-weight: 600;
         }
         .nav {
-            margin-bottom: 25px;
+            text-align: center;
+            margin-bottom: 30px;
         }
         .nav a {
-            background-color: #4facfe;
-            color: white;
-            padding: 10px 20px;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: #FFFFFF;
+            padding: 12px 24px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 25px;
             font-weight: bold;
-            margin-right: 10px;
-            transition: background-color 0.3s;
+            margin: 0 5px;
+            transition: all 0.3s;
             display: inline-block;
+            box-shadow: 0 3px 10px rgba(255, 105, 180, 0.3);
         }
         .nav a:hover {
-            background-color: #00f2fe;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
         }
         h2 {
-            color: #4facfe;
+            color: #FF1493;
             margin-bottom: 20px;
             font-size: 1.8em;
+            text-align: center;
         }
         table {
-            border-collapse: collapse;
             width: 100%;
-            background-color: white;
-            border-radius: 10px;
+            border-collapse: collapse;
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E9 100%);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
         }
         th, td {
-            padding: 15px;
+            padding: 16px;
             text-align: left;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 2px solid #FFB6D9;
         }
         th {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color: #FFFFFF;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 0.9em;
-            letter-spacing: 0.5px;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+        }
+        td {
+            color: #C71585;
         }
         tr:hover {
-            background-color: #f0fbff;
+            background-color: #FFE4E9;
         }
         tr:last-child td {
             border-bottom: none;
         }
         .track-number {
             font-weight: bold;
-            color: #4facfe;
-            font-size: 1.2em;
+            color: #FF1493;
+            font-size: 1.3em;
         }
         .no-songs {
             padding: 40px;
             text-align: center;
-            background-color: #fff3cd;
-            border: 2px solid #ffc107;
-            border-radius: 10px;
-            color: #856404;
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E9 100%);
+            border: 2px solid #FFB6D9;
+            border-radius: 20px;
+            color: #FF69B4;
             font-size: 1.1em;
+        }
+        .track-count {
+            text-align: center;
+            color: #FF69B4;
+            font-size: 1.1em;
+            margin-top: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 <div class="container">
+    <div class="logo">Spotify</div>
+
     <div class="album-header">
-        <h1>💿 <span th:text="${album.naziv}"></span></h1>
-        <div class="album-info">
-            <div>
-                <strong>Izvođač:</strong>
-                <span th:text="${album.izvodjac}"></span>
-            </div>
-            <div>
-                <strong>Žanr:</strong>
-                <span th:text="${album.zanr}"></span>
-            </div>
-            <div>
-                <strong>Godina izdanja:</strong>
-                <span th:text="${album.godinaIzdanja}"></span>
+        <img th:src="${album.slika}" th:alt="${album.naziv}" class="album-cover">
+        <div class="album-info-section">
+            <h1 th:text="${album.naziv}"></h1>
+            <div class="album-info">
+                <div>
+                    <strong>Izvodjac</strong>
+                    <span th:text="${album.izvodjac}"></span>
+                </div>
+                <div>
+                    <strong>Zanr</strong>
+                    <span th:text="${album.zanr}"></span>
+                </div>
+                <div>
+                    <strong>Godina</strong>
+                    <span th:text="${album.godinaIzdanja}"></span>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="nav">
-        <a href="/a">💿 Nazad na albume</a>
-        <a href="/b">🎵 Sve pjesme</a>
+        <a href="/a">Nazad na albume</a>
+        <a href="/b">Sve pjesme</a>
     </div>
 
     <h2>Pjesme na albumu</h2>
@@ -157,8 +209,11 @@
     </table>
 
     <div class="no-songs" th:if="${#lists.isEmpty(pjesme)}">
-        ⚠️ Ovaj album trenutno nema dodanih pjesama.
+        Ovaj album trenutno nema dodanih pjesama.
     </div>
+
+    <p class="track-count" th:if="${!#lists.isEmpty(pjesme)}"
+       th:text="${#lists.size(pjesme)} + ' pjesama na albumu'"></p>
 </div>
 </body>
 </html>
