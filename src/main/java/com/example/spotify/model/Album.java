@@ -6,13 +6,15 @@ public class Album {
     private String zanr;
     private int godinaIzdanja;
     private String izvodjac;
+    private String slika;
 
-    public Album(Long id, String naziv, String zanr, int godinaIzdanja, String izvodjac) {
+    public Album(Long id, String naziv, String zanr, int godinaIzdanja, String izvodjac, String slika) {
         this.id = id;
         this.naziv = naziv;
         this.zanr = zanr;
         this.godinaIzdanja = godinaIzdanja;
         this.izvodjac = izvodjac;
+        this.slika = slika;
     }
 
     public Long getId() { return id; }
@@ -29,4 +31,7 @@ public class Album {
 
     public String getIzvodjac() { return izvodjac; }
     public void setIzvodjac(String izvodjac) { this.izvodjac = izvodjac; }
+
+    public String getSlika() { return slika; }
+    public void setSlika(String slika) { this.slika = slika; }
 }

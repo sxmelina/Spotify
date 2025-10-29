@@ -15,10 +15,10 @@ public class DemoData {
 
     public DemoData() {
         // Kreiranje albuma
-        albumi.add(new Album(1L, "Sredinom", "New age", 2000, "Dino Merlin"));
-        albumi.add(new Album(2L, "Thriller", "Pop", 1982, "Michael Jackson"));
-        albumi.add(new Album(3L, "Pakt sa đavolom", "Rep", 2017, "Jala & Buba Corelli"));
-        albumi.add(new Album(4L, "1989", "Pop", 2014, "Taylor Swift"));
+        albumi.add(new Album(1L, "Sredinom", "New age", 2000, "Dino Merlin", "https://dinomerlin.com/assets/photos/album/big/1626705594-sredinom.jpg"));
+        albumi.add(new Album(2L, "Thriller", "Pop", 1982, "Michael Jackson","https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png"));
+        albumi.add(new Album(3L, "Pakt sa đavolom", "Rep", 2017, "Jala & Buba Corelli","https://upload.wikimedia.org/wikipedia/en/7/71/Pakt_s_djavolom.jpg"));
+        albumi.add(new Album(4L, "1989", "Pop", 2014, "Taylor Swift","https://upload.wikimedia.org/wikipedia/en/f/f6/Taylor_Swift_-_1989.png"));
 
        //dino
         pjesme.add(new Pjesma(1L, "Godinama", "3:56", 2000, 1L));

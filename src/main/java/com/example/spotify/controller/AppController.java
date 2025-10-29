@@ -23,14 +23,14 @@ public class AppController {
     @GetMapping("/a")
     public String listaAlbuma(Model model) {
         model.addAttribute("albumi", demoData.getAlbumi());
-        return "listA";
+        return "listaAlbuma";
     }
 
     @GetMapping("/b")
     public String listaPjesama(Model model) {
         model.addAttribute("pjesme", demoData.getPjesme());
         model.addAttribute("demoData", demoData);
-        return "listB";
+        return "listaPjesama";
     }
 
     @GetMapping("/a/action/{id}")
