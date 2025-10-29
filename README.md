@@ -33,3 +33,5 @@ Spotify muzicka platforma za pregled albuma i pjesama sa Spotify brendom i dizaj
 
 ## Screenshot
 <img width="1918" height="1077" alt="image" src="https://github.com/user-attachments/assets/243a72bc-9f9c-4ec4-a118-2a90d0ed4f8e" />
+<img width="1918" height="1075" alt="image" src="https://github.com/user-attachments/assets/3647e716-16a3-4a01-a876-3cd72cc8bb0a" />
+
