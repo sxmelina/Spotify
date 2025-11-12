@@ -24,22 +24,20 @@ public class KorisnikRestController {
         this.albumRepository = albumRepository;
     }
 
-    // ---- KORISNICI CRUD (osnovno) ----
+    // osnovni crud
 
-    // GET /api/korisnici
+
     @GetMapping
     public List<Korisnik> all() {
         return korisnikRepository.findAll();
     }
 
-    // GET /api/korisnici/{id}
     @GetMapping("/{id}")
     public Korisnik one(@PathVariable Long id) {
         return korisnikRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Korisnik nije pronađen"));
     }
 
-    // POST /api/korisnici  (kreiranje)
     @PostMapping
     public ResponseEntity<Korisnik> create(@RequestBody Korisnik body) {
         if (body.getId() != null) {
@@ -49,7 +47,6 @@ public class KorisnikRestController {
         return ResponseEntity.created(URI.create("/api/korisnici/" + saved.getId())).body(saved);
     }
 
-    // PUT /api/korisnici/{id}  (izmjena)
     @PutMapping("/{id}")
     public Korisnik update(@PathVariable Long id, @RequestBody Korisnik body) {
         var k = korisnikRepository.findById(id)
@@ -59,18 +56,15 @@ public class KorisnikRestController {
         return korisnikRepository.save(k);
     }
 
-    // ---- LIKE KOLEKCIJA ----
+    // lajkovi
 
-    // GET /api/korisnici/{id}/likes  (svi lajkovani albumi)
     @GetMapping("/{id}/likes")
     public List<Album> likes(@PathVariable Long id) {
         var k = korisnikRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Korisnik nije pronađen"));
-        // toList() od Java 16; ako si na starijem, koristi new ArrayList<>(k.getLikedAlbums())
         return k.getLikedAlbums().stream().toList();
     }
 
-    // POST /api/korisnici/{id}/like/{albumId}  (lajkuj)
     @PostMapping("/{id}/like/{albumId}")
     public ResponseEntity<Void> like(@PathVariable Long id, @PathVariable Long albumId) {
         var k = korisnikRepository.findById(id)
@@ -83,7 +77,6 @@ public class KorisnikRestController {
         return ResponseEntity.ok().build();
     }
 
-    // DELETE /api/korisnici/{id}/like/{albumId}  (unlike)
     @DeleteMapping("/{id}/like/{albumId}")
     public ResponseEntity<Void> unlike(@PathVariable Long id, @PathVariable Long albumId) {
         var k = korisnikRepository.findById(id)
