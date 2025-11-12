@@ -16,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
+@Access(AccessType.FIELD)
 public class Pjesma {
     private Long albumId;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

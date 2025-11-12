@@ -4,133 +4,76 @@
     <meta charset="UTF-8">
     <title>Lista Albuma - Spotify</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #FFB6D9 0%, #FFC9E3 50%, #FFE5F1 100%);
-            min-height: 100vh;
-            padding: 40px 20px;
+            min-height: 100vh; padding: 40px 20px;
         }
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: #FFFFFF;
-            border-radius: 25px;
-            padding: 40px;
+            max-width: 1200px; margin: 0 auto; background-color: #FFFFFF;
+            border-radius: 25px; padding: 40px;
             box-shadow: 0 15px 50px rgba(255, 105, 180, 0.3);
         }
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+        .header { text-align: center; margin-bottom: 40px; }
         .logo {
-            color: #FF69B4;
-            font-size: 3.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            letter-spacing: -2px;
-            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
+            color: #FF69B4; font-size: 3.5em; font-weight: bold; margin-bottom: 10px;
+            letter-spacing: -2px; text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
         }
-        h1 {
-            color: #FF1493;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            color: #FF69B4;
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-        .nav {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .nav a {
+        h1 { color: #FF1493; font-size: 2.5em; margin-bottom: 10px; }
+        .subtitle { color: #FF69B4; font-size: 1.2em; margin-bottom: 30px; }
+
+        .nav { text-align: center; margin-bottom: 40px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .btn {
             background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
-            color: #FFFFFF;
-            padding: 14px 30px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: all 0.3s;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+            color: #FFFFFF; padding: 14px 30px; text-decoration: none; border-radius: 30px;
+            font-weight: bold; font-size: 1.1em; transition: all 0.3s; display: inline-block;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4); border: none; cursor: pointer;
         }
-        .nav a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
-        }
-        .albums-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6); }
+
+        .albums-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
         .album-card {
             background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E9 100%);
-            border-radius: 20px;
-            padding: 20px;
-            transition: all 0.3s;
+            border-radius: 20px; padding: 20px; transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
-            border: 2px solid #FFB6D9;
+            border: 2px solid #FFB6D9; display: flex; flex-direction: column; gap: 12px;
         }
-        .album-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4);
-        }
+        .album-card:hover { transform: translateY(-10px); box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4); }
         .album-image {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 15px;
+            width: 100%; height: 240px; object-fit: cover; border-radius: 15px; margin-bottom: 5px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-        .album-title {
-            color: #FF1493;
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        .album-artist {
-            color: #FF69B4;
-            font-size: 1.1em;
-            margin-bottom: 8px;
-        }
-        .album-details {
-            color: #C71585;
-            font-size: 0.9em;
-            margin-bottom: 15px;
-        }
+        .album-title { color: #FF1493; font-size: 1.3em; font-weight: bold; margin-bottom: 4px; }
+        .album-artist { color: #FF69B4; font-size: 1.1em; margin-bottom: 4px; }
+        .album-details { color: #C71585; font-size: 0.9em; margin-bottom: 6px; }
+
         .action-link {
-            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
-            color: #FFFFFF;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 20px;
-            font-weight: bold;
-            transition: all 0.3s;
-            display: inline-block;
-            width: 100%;
-            text-align: center;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%); color: #FFFFFF;
+            padding: 10px 20px; text-decoration: none; border-radius: 20px; font-weight: bold;
+            transition: all 0.3s; display: inline-block; width: 100%; text-align: center;
             box-shadow: 0 3px 10px rgba(255, 105, 180, 0.3);
         }
-        .action-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
+        .action-link:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5); }
+
+        /* NOVO: Like dugme (da ostane pink) */
+        .like-form { width: 100%; }
+        .like-btn {
+            composes: btn;
+            width: 100%;
+            background: linear-gradient(135deg, #FFA0CC 0%, #FF69B4 100%);
+            box-shadow: 0 3px 10px rgba(255, 105, 180, 0.35);
         }
-        .album-count {
-            text-align: center;
-            color: #FF69B4;
-            font-size: 1.1em;
-            margin-top: 30px;
-            font-weight: bold;
+        /* fallback ako composes ne radi u tvom okruženju: */
+        .like-btn {
+            color: #fff; padding: 12px 20px; border-radius: 20px; border: none; font-weight: bold; cursor: pointer;
+            transition: all 0.3s;
         }
+        .like-btn:hover { transform: scale(1.03); box-shadow: 0 5px 15px rgba(255, 105, 180, 0.55); }
+
+        .btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; }
+
+        .album-count { text-align: center; color: #FF69B4; font-size: 1.1em; margin-top: 30px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -141,8 +84,11 @@
         <p class="subtitle">Pregledajte sve albume na Spotify platformi</p>
     </div>
 
+    <!-- NOVO: kratka navigacija do Korisnika -->
     <div class="nav">
-        <a href="/b">Pogledaj sve pjesme</a>
+        <a class="btn" href="/b">Pogledaj sve pjesme</a>
+        <a class="btn" href="/korisnici">Korisnici</a>
+        <a class="btn" href="/korisnici/new">+ Novi korisnik</a>
     </div>
 
     <div class="albums-grid">
@@ -154,9 +100,18 @@
                 <span th:text="${album.zanr}"></span> •
                 <span th:text="${album.godinaIzdanja}"></span>
             </div>
-            <a class="action-link" th:href="@{/a/action/{id}(id=${album.id})}">
-                Prikazi pjesme
-            </a>
+
+            <div class="btn-row">
+                <!-- postojeći link za detalj/pjesme (ostavljam tvoj URL) -->
+                <a class="action-link" th:href="@{/a/action/{id}(id=${album.id})}">Prikaži pjesme</a>
+
+                <!-- NOVO: Like forma (Many-to-Many: Korisnik ↔ Album) -->
+                <!-- Ako ti je endpoint drugačiji, promijeni action ispod. Ovo očekuje POST /album/{id}/like sa parametrom userId -->
+                <form class="like-form" th:action="@{|/album/${album.id}/like|}" method="post">
+                    <input type="hidden" name="userId" value="1"/>
+                    <button type="submit" class="like-btn">♡ Like</button>
+                </form>
+            </div>
         </div>
     </div>
 

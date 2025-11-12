@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Korisnici - Spotify</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FFC9E3 50%, #FFE5F1 100%);
+            min-height:100vh; padding:40px 20px;
+        }
+        .container{ max-width:1100px; margin:0 auto; background:#fff; border-radius:25px; padding:40px;
+            box-shadow:0 15px 50px rgba(255,105,180,.3);
+        }
+        .header{ text-align:center; margin-bottom:30px;}
+        .logo{ color:#FF69B4; font-size:3.2em; font-weight:700; letter-spacing:-2px; text-shadow:2px 2px 4px rgba(255,105,180,.2); }
+        h1{ color:#FF1493; font-size:2.2em; margin-top:8px; }
+        .subtitle{ color:#FF69B4; margin-top:6px; }
+
+        .nav{ text-align:center; margin: 30px 0; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+        .btn{
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color:#fff; padding:12px 26px; text-decoration:none; border-radius:30px; font-weight:700;
+            box-shadow:0 4px 15px rgba(255,105,180,.4); transition:.3s; border:none; cursor:pointer;
+        }
+        .btn:hover{ transform:translateY(-3px); box-shadow:0 6px 20px rgba(255,105,180,.6);}
+
+        table{ width:100%; border-collapse:separate; border-spacing:0 10px; }
+        th, td{ text-align:left; padding:14px 16px; }
+        th{ color:#FF1493; }
+        .row{
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E9 100%);
+            border:2px solid #FFB6D9; border-radius:14px; box-shadow:0 4px 15px rgba(255,105,180,.2);
+        }
+        .actions a{ color:#FF1493; text-decoration:none; font-weight:700; }
+        .actions a:hover{ text-decoration:underline; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo">Spotify</div>
+        <h1>Korisnici</h1>
+        <p class="subtitle">Pregled i upravljanje korisnicima</p>
+    </div>
+
+    <div class="nav">
+        <a class="btn" href="/albumi">← Nazad na albume</a>
+        <a class="btn" href="/korisnici/new">+ Novi korisnik</a>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th><th>Username</th><th>Email</th><th>Akcije</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="row" th:each="k : ${korisnici}">
+            <td th:text="${k.id}">1</td>
+            <td th:text="${k.username}">meli</td>
+            <td th:text="${k.email}">meli@example.com</td>
+            <td class="actions">
+                <a th:href="@{|/korisnici/${k.id}|}">Detalji</a> |
+                <a th:href="@{|/korisnici/${k.id}/edit|}">Izmijeni</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

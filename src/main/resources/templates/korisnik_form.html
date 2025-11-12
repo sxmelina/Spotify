@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${korisnik.id} != null ? 'Uredi korisnika - Spotify' : 'Novi korisnik - Spotify'">Korisnik - Spotify</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6D9 0%, #FFC9E3 50%, #FFE5F1 100%);
+            min-height:100vh; padding:40px 20px;
+        }
+        .container{ max-width:800px; margin:0 auto; background:#fff; border-radius:25px; padding:40px;
+            box-shadow:0 15px 50px rgba(255,105,180,.3);
+        }
+        .header{ text-align:center; margin-bottom:30px;}
+        .logo{ color:#FF69B4; font-size:3.2em; font-weight:700; letter-spacing:-2px; text-shadow:2px 2px 4px rgba(255,105,180,.2); }
+        h1{ color:#FF1493; font-size:2.0em; margin-top:8px; }
+        .subtitle{ color:#FF69B4; margin-top:6px; }
+
+        .nav{ text-align:center; margin: 20px 0 30px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+        .btn{
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+            color:#fff; padding:12px 26px; text-decoration:none; border-radius:30px; font-weight:700;
+            box-shadow:0 4px 15px rgba(255,105,180,.4); transition:.3s; border:none; cursor:pointer;
+        }
+        .btn:hover{ transform:translateY(-3px); box-shadow:0 6px 20px rgba(255,105,180,.6);}
+
+        form{ display:grid; gap:16px; }
+        label{ color:#C71585; font-weight:700; }
+        input{
+            width:100%; padding:12px 14px; border-radius:14px; border:2px solid #FFB6D9;
+            background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E9 100%);
+            outline:none; box-shadow:0 3px 12px rgba(255,105,180,.18);
+            font-size:1em;
+        }
+        .submit {
+            background: linear-gradient(135deg, #FFA0CC 0%, #FF69B4 100%);
+            color:#fff; padding:12px 20px; border:none; border-radius:20px; font-weight:700; cursor:pointer;
+            box-shadow:0 3px 10px rgba(255,105,180,.35); transition: all .3s; width:100%;
+        }
+        .submit:hover { transform: scale(1.02); box-shadow:0 5px 15px rgba(255,105,180,.55); }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo">Spotify</div>
+        <h1 th:text="${korisnik.id} != null ? 'Uredi korisnika' : 'Novi korisnik'">Korisnik</h1>
+        <p class="subtitle">Unesite ili ažurirajte podatke</p>
+    </div>
+
+    <div class="nav">
+        <a class="btn" href="/korisnici">← Nazad</a>
+        <a class="btn" href="/albumi">Albumi</a>
+    </div>
+
+
+    <form th:if="${korisnik.id} == null"
+          th:action="@{/korisnici}"
+          method="post">
+        <div>
+            <label>Username</label>
+            <input type="text" name="username" th:value="${korisnik.username}" required/>
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="email" name="email" th:value="${korisnik.email}" required/>
+        </div>
+        <button class="submit" type="submit">Kreiraj</button>
+    </form>
+
+    <form th:if="${korisnik.id} != null"
+          th:action="@{/korisnici/{id}(id=${korisnik.id})}"
+          method="post">
+        <div>
+            <label>Username</label>
+            <input type="text" name="username" th:value="${korisnik.username}" required/>
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="email" name="email" th:value="${korisnik.email}" required/>
+        </div>
+        <button class="submit" type="submit">Sačuvaj izmjene</button>
+    </form>
+
+</div>
+</body>
+</html>
