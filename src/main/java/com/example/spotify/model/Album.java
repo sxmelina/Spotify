@@ -1,6 +1,7 @@
 package com.example.spotify.model;
 
 import com.example.spotify.model.Korisnik;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.*;
 
@@ -19,6 +20,7 @@ public class Album {
     private List<Pjesma> pjesme = new ArrayList<>();
 
     @ManyToMany(mappedBy = "likedAlbums")
+    @JsonIgnore
     private Set<Korisnik> likedBy = new HashSet<>();
 
     public Album() {}

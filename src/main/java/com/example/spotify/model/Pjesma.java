@@ -12,6 +12,7 @@ public class Pjesma {
 
 package com.example.spotify.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -25,6 +26,7 @@ public class Pjesma {
     private int godinaIzdanja;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private Album album;
 
     public Pjesma(){}
