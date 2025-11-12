@@ -1,11 +1,13 @@
 package com.example.spotify.model;
-import jakarta.persistence.*;
-import java.util.*;
 
+import jakarta.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
 @Table(name = "korisnici")
 public class Korisnik {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, unique = true)
@@ -23,11 +25,7 @@ public class Korisnik {
     private Set<Album> likedAlbums = new HashSet<>();
 
     public Korisnik() {}
-
-    public Korisnik(String username, String email) {
-        this.username = username;
-        this.email = email;
-    }
+    public Korisnik(String username, String email) { this.username = username; this.email = email; }
 
     public Long getId() { return id; }
     public String getUsername() { return username; }
@@ -37,6 +35,6 @@ public class Korisnik {
     public Set<Album> getLikedAlbums() { return likedAlbums; }
     public void setLikedAlbums(Set<Album> likedAlbums) { this.likedAlbums = likedAlbums; }
 
-    public void likeAlbum(Album album) { this.likedAlbums.add(album); }
-    public void unlikeAlbum(Album album) { this.likedAlbums.remove(album); }
+    public void likeAlbum(Album album) { likedAlbums.add(album); }
+    public void unlikeAlbum(Album album) { likedAlbums.remove(album); }
 }

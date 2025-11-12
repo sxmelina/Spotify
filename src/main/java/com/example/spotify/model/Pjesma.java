@@ -1,4 +1,4 @@
-package com.example.spotify.model;
+/* package com.example.spotify.model;
 
 public class Pjesma {
     private Long id;
@@ -6,6 +6,28 @@ public class Pjesma {
     private String trajanje;
     private int godinaIzdanja;
     private Long albumId;
+
+
+*/
+
+package com.example.spotify.model;
+
+import jakarta.persistence.*;
+
+@Entity
+public class Pjesma {
+    private Long albumId;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String naziv;
+    private String trajanje;
+    private int godinaIzdanja;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Album album;
+
+    public Pjesma(){}
 
     public Pjesma(Long id, String naziv, String trajanje, int godinaIzdanja, Long albumId) {
         this.id = id;
@@ -30,3 +52,4 @@ public class Pjesma {
     public Long getAlbumId() { return albumId; }
     public void setAlbumId(Long albumId) { this.albumId = albumId; }
 }
+

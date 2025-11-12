@@ -1,12 +1,27 @@
 package com.example.spotify.model;
 
+import com.example.spotify.model.Korisnik;
+import jakarta.persistence.*;
+import java.util.*;
+
+@Entity
 public class Album {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String naziv;
     private String zanr;
     private int godinaIzdanja;
     private String izvodjac;
     private String slika;
+
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Pjesma> pjesme = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "likedAlbums")
+    private Set<Korisnik> likedBy = new HashSet<>();
+
+    public Album() {}
 
     public Album(Long id, String naziv, String zanr, int godinaIzdanja, String izvodjac, String slika) {
         this.id = id;
@@ -34,4 +49,6 @@ public class Album {
 
     public String getSlika() { return slika; }
     public void setSlika(String slika) { this.slika = slika; }
+
 }
+
