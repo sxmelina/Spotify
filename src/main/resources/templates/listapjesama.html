@@ -2,156 +2,71 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Lista Pjesama - Spotify</title>
+    <title>Pjesme - Spotify</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #FFB6D9 0%, #FFC9E3 50%, #FFE5F1 100%);
-            min-height: 100vh;
-            padding: 40px 20px;
+            min-height:100vh; padding:40px 20px;
         }
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background-color: #FFFFFF;
-            border-radius: 25px;
-            padding: 40px;
-            box-shadow: 0 15px 50px rgba(255, 105, 180, 0.3);
+            max-width:1100px; margin:0 auto; background:#fff; border-radius:25px; padding:40px;
+            box-shadow:0 15px 50px rgba(255,105,180,.3);
         }
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .logo {
-            color: #FF69B4;
-            font-size: 3.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            letter-spacing: -2px;
-            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
-        }
-        h1 {
-            color: #FF1493;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            color: #FF69B4;
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-        .nav {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .nav a {
+        .header { text-align:center; margin-bottom:30px; }
+        .logo { color:#FF69B4; font-size:3.2em; font-weight:700; letter-spacing:-2px;
+            text-shadow:2px 2px 4px rgba(255,105,180,.2); }
+        h1 { color:#FF1493; font-size:2.2em; margin-top:8px; }
+        .subtitle { color:#FF69B4; margin-top:6px; }
+
+        .nav { text-align:center; margin: 30px 0; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+        .btn{
             background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
-            color: #FFFFFF;
-            padding: 14px 30px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: all 0.3s;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+            color:#fff; padding:12px 26px; text-decoration:none; border-radius:30px; font-weight:700;
+            box-shadow:0 4px 15px rgba(255,105,180,.4); transition:.3s; border:none; cursor:pointer;
         }
-        .nav a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .btn:hover{ transform:translateY(-3px); box-shadow:0 6px 20px rgba(255,105,180,.6);}
+
+        .song-list { display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+        .song {
             background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E9 100%);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+            border-radius:16px; border:2px solid #FFB6D9; padding:10px 16px;
+            box-shadow:0 4px 15px rgba(255,105,180,.2);
+            display:flex; justify-content:space-between; align-items:center;
         }
-        th, td {
-            padding: 18px;
-            text-align: left;
-            border-bottom: 2px solid #FFB6D9;
-        }
-        th {
-            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
-            color: #FFFFFF;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.9em;
-            letter-spacing: 1px;
-        }
-        td {
-            color: #C71585;
-            font-size: 1em;
-        }
-        tr:hover {
-            background-color: #FFE4E9;
-        }
-        tr:last-child td {
-            border-bottom: none;
-        }
-        .album-info {
-            color: #FF69B4;
-            font-size: 0.95em;
-        }
-        .album-name {
-            color: #FF1493;
-            font-weight: bold;
-        }
-        .song-count {
-            text-align: center;
-            color: #FF69B4;
-            font-size: 1.1em;
-            margin-top: 30px;
-            font-weight: bold;
-        }
+        .song-title { color:#FF1493; font-weight:700; }
+        .song-meta { color:#C71585; font-size:.9em; }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="header">
         <div class="logo">Spotify</div>
-        <h1>Lista Pjesama</h1>
-        <p class="subtitle">Sve pjesme dostupne na Spotify platformi</p>
+        <h1>Pjesme</h1>
+        <p class="subtitle">Lista svih pjesama u bazi</p>
     </div>
 
     <div class="nav">
-        <a href="/a">Pogledaj sve albume</a>
+        <a class="btn" href="/albumi">← Nazad na albume</a>
+        <a class="btn" href="/korisnici">Korisnici</a>
     </div>
 
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Naziv Pjesme</th>
-            <th>Trajanje</th>
-            <th>Godina</th>
-            <th>Album</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="pjesma : ${pjesme}">
-            <td th:text="${pjesma.id}"></td>
-            <td th:text="${pjesma.naziv}"></td>
-            <td th:text="${pjesma.trajanje}"></td>
-            <td th:text="${pjesma.godinaIzdanja}"></td>
-            <td>
-                        <span th:with="album=${demoData.getAlbumById(pjesma.albumId)}">
-                            <span class="album-name" th:text="${album.naziv}"></span>
-                            <span class="album-info" th:text="' - ' + ${album.izvodjac}"></span>
-                        </span>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <p class="song-count" th:text="${#lists.size(pjesme)} + ' pjesama dostupno'"></p>
+    <div class="song-list">
+        <div class="song" th:each="p : ${pjesme}">
+            <div>
+                <div class="song-title" th:text="${p.naziv}">Naziv</div>
+                <div class="song-meta">
+                    <span th:text="${p.trajanje}">3:15</span>
+                    ·
+                    <span th:text="${p.godinaIzdanja}">2024</span>
+                </div>
+            </div>
+            <div class="song-meta">
+                <span th:text="${p.album != null ? p.album.naziv : 'Bez albuma'}">Album</span>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

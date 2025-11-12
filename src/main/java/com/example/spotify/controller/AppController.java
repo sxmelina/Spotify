@@ -37,6 +37,13 @@ public class AppController {
         return "listaalbuma";
     }
 
+    @GetMapping({ "/pjesme"})
+    public String listaPjesama(Model model) {
+        List<Pjesma> pjesme = pjesmaRepository.findAll();
+        model.addAttribute("pjesme", pjesme);
+        return "listapjesama";
+    }
+
     @GetMapping("/a/action/{id}")
     public String detaljAlbuma(@PathVariable Long id, Model model) {
         Album album = albumRepository.findById(id).orElse(null);

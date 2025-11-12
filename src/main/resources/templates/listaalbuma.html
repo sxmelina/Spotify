@@ -84,9 +84,8 @@
         <p class="subtitle">Pregledajte sve albume na Spotify platformi</p>
     </div>
 
-    <!-- NOVO: kratka navigacija do Korisnika -->
     <div class="nav">
-        <a class="btn" href="/b">Pogledaj sve pjesme</a>
+        <a class="btn" href="/pjesme">Pogledaj sve pjesme</a>
         <a class="btn" href="/korisnici">Korisnici</a>
         <a class="btn" href="/korisnici/new">+ Novi korisnik</a>
     </div>
@@ -105,7 +104,7 @@
                 <a class="action-link" th:href="@{/a/action/{id}(id=${album.id})}">Prikaži pjesme</a>
 
                 <form class="like-form" th:action="@{|/album/${album.id}/like|}" method="post">
-                    <input type="hidden" name="userId" value="1"/>
+                    <input type="hidden" name="userId" value="2"/>
                     <button type="submit" class="like-btn">♡ Like</button>
                 </form>
             </div>
