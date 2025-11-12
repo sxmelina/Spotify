@@ -84,10 +84,8 @@
             <div class="row"><b>Godina:</b> <span th:text="${album.godinaIzdanja}"></span></div>
 
             <div class="actions">
-                <!-- Link za pjesme: ako koristiš posebnu rutu /a/action/{id}, ostaje ovako -->
                 <a class="action-link" th:href="@{/a/action/{id}(id=${album.id})}">Prikaži pjesme</a>
 
-                <!-- Like forma (Many-to-Many Korisnik ↔ Album) -->
                 <form th:action="@{|/album/${album.id}/like|}" method="post">
                     <input type="hidden" name="userId" value="1"/>
                     <button type="submit" class="like-btn">♡ Like</button>
