@@ -82,14 +82,10 @@ Program (JPA) automatski kreira tabele, a potrebni podaci, poput imena albuma i 
 3. Otvorite browser: http://localhost:8080/albumi
 
 ## Screenshot
-Početna stranica sa albumima
-(https://raw.githubusercontent.com/sxmelina/Spotify/refs/heads/lab2/screenshots/Screenshot%202025-11-13%20005302.png)
-Dodavanje novog korisnika
-(https://raw.githubusercontent.com/sxmelina/Spotify/refs/heads/lab2/screenshots/Screenshot%202025-11-13%20005326.png)
-Svi korisnici
-(https://raw.githubusercontent.com/sxmelina/Spotify/refs/heads/lab2/screenshots/Screenshot%202025-11-13%20005317.png)
-Lajkani albumi jednog korisnika
-(https://raw.githubusercontent.com/sxmelina/Spotify/refs/heads/lab2/screenshots/Screenshot%202025-11-13%20012613.png)
+![Početna stranica sa albumima](https://raw.githubusercontent.com/sxmelina/Spotify/refs/heads/lab2/screenshots/Screenshot%202025-11-13%20005302.png)
+![Dodavanje novog korisnika](https://raw.githubusercontent.com/sxmelina/Spotify/refs/heads/lab2/screenshots/Screenshot%202025-11-13%20005326.png)
+![Svi korisnici](https://raw.githubusercontent.com/sxmelina/Spotify/refs/heads/lab2/screenshots/Screenshot%202025-11-13%20005317.png)
+![Lajkani albumi jednog korisnika](https://raw.githubusercontent.com/sxmelina/Spotify/refs/heads/lab2/screenshots/Screenshot%202025-11-13%20012613.png)
 
 
 
