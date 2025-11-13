@@ -74,7 +74,6 @@
             <div class="album-details">
                 <span th:text="${a.zanr}">Žanr</span> • <span th:text="${a.godinaIzdanja}">2020</span>
             </div>
-            <!-- Za konzistentnost s listom albuma koristimo /a/action/{id} -->
             <a class="action-link" th:href="@{/a/action/{id}(id=${a.id})}">Prikaži pjesme</a>
         </div>
     </div>
